@@ -1,20 +1,14 @@
 <?php
 
-spl_autoload_register(
-    function ($class_name) {
-        include $class_name . '.php';
-    }
-);
-
 class RouletteGame
 {
-    private $table;
-    private $balance;
+    private $_table;
+    private $_balance;
 
-    public function __construct($balance, $table)
+    public function __construct($_balance, $_table)
     {
-        $this->balance = $balance;
-        $this->table = $table;
+        $this->_balance = $_balance;
+        $this->_table = $_table;
     }
 
     public function play()
@@ -40,10 +34,10 @@ class RouletteGame
                     $val = intval(readline());
                     if($val == null || (!is_numeric($num) && $num < 0 && $num > 38)) {
                         echo "Je hebt geen correcte hoeveelheid ingevult.".PHP_EOL;
-                    } else if ($this->balance > 0 && $val <= $this->balance) {
+                    } else if ($this->_balance > 0 && $val <= $this->_balance) {
                         $bet = new Bet($type, $num, $val);
-                        $this->table->addBet($bet);
-                        $this->balance -= $val;
+                        $this->_table->addBet($bet);
+                        $this->_balance -= $val;
                     } else {
                         echo "Je hebt niet genoeg geld om een bet te plaatsen.".PHP_EOL;
                     }
@@ -57,6 +51,16 @@ class RouletteGame
         if($opp == "stop") {
             exit();
         }
+    }
+
+    public function set_balance($_balance)
+    {
+        $this->_balance = $_balance;
+    }
+
+    public function get_balance()
+    {
+        return $this->_balance;
     }
 }
 

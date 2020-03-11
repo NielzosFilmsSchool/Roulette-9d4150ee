@@ -2,30 +2,30 @@
 
 class Bet
 {
-    private $amount;
-    private $type;
-    private $nummer;
+    private $_amount;
+    private $_type;
+    private $_nummer;
 
     public function __construct($type, $nummer, $amount)
     {
-        $this->type = $type;
-        $this->amount = $amount;
-        $this->nummer = $nummer;
+        $this->_type = $type;
+        $this->_amount = $amount;
+        $this->_nummer = $nummer;
     }
 
     public function getAmount()
     {
-        return $this->amount;
+        return $this->_amount;
     }
 
     public function getType()
     {
-        return $this->type;
+        return $this->_type;
     }
 
     public function getNummer()
     {
-        return $this->nummer;
+        return $this->_nummer;
     }
 }
 

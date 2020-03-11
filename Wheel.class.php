@@ -2,6 +2,9 @@
 
 class Wheel
 {
+    private $red = "rood";
+    private $black = "zwart";
+
     public function roll()
     {
         $num = rand(0, 38);
@@ -13,15 +16,15 @@ class Wheel
 
         if(($num >= 1 && $num <= 10) || ($num >= 19 && $num <= 28)) {
             if($even) {
-                $color = "black";
+                $color = $this->black;
             }else {
-                $color = "red";
+                $color = $this->red;
             }
         }else if(($num >= 11 && $num <= 18) || ($num >= 29 && $num <= 36)) {
             if($even) {
-                $color = "red";
+                $color = $this->red;
             }else {
-                $color = "black";
+                $color = $this->black;
             }
         }
 

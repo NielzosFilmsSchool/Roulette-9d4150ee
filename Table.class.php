@@ -1,28 +1,22 @@
 <?php
 
-spl_autoload_register(
-    function ($class_name) {
-        include $class_name . '.php';
-    }
-);
-
 class Table
 {
-    private $bets = [];
-    private $wheel;
+    private $_bets = [];
+    private $_wheel;
 
     public function __construct()
     {
-        $this->wheel = new Wheel();
+        $this->_wheel = new _wheel();
     }
     public function addBet($bet)
     {
-        $this->bets[] = $bet;
+        $this->_bets[] = $bet;
     }
 
     public function roll()
     {
-        $roll = $this->wheel->roll();
+        $roll = $this->_wheel->roll();
 
         $num = $roll[0];
         $color = $roll[2];
@@ -30,7 +24,7 @@ class Table
 
         $won_money = 0;
 
-        foreach($this->bets as $bet) {
+        foreach($this->_bets as $bet) {
             $type = $bet->getType();
             $bet_num = $bet->getNummer();
             $amount = $bet->getAmount();
@@ -40,14 +34,14 @@ class Table
                 } else {
                     $won_money += -($amount*35);
                 }
-            } else if($type == "rood") {
+            }else if($type == "rood") {
                 if($color == "red") {
                     $won_money += $amount;
                 } else {
                     $won_money += -($amount);
                 }
-            } else if($type == "black") {
-                if($color == "black") {
+            } else if($type == "zwart") {
+                if($color == "zwart") {
                     $won_money += $amount;
                 }else {
                     $won_money += -($amount);
@@ -66,6 +60,7 @@ class Table
                 }
             }
         }
+        $this->_bets = [];
         return $won_money;
     }
 }

@@ -22,6 +22,7 @@ while(true){
     $roulette->play();
     $won_money = $table->roll();
     $money += $won_money;
+    $roulette->setBalance($money);
     echo "You won: $won_money, you now have $money,-".PHP_EOL;
     if($money <= 0) {
         echo "You do not have enough money to continue playing. Quiting game...".PHP_EOL;
