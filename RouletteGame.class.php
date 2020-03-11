@@ -53,12 +53,12 @@ class RouletteGame
         }
     }
 
-    public function set_balance($_balance)
+    public function setBalance($_balance)
     {
         $this->_balance = $_balance;
     }
 
-    public function get_balance()
+    public function getBalance()
     {
         return $this->_balance;
     }
